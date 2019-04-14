@@ -5,6 +5,11 @@ item=$2
 accesslog=$3
 servicename=$4
 
+if ! [ -x "$(command -v logtail)" ]; then
+  echo 'Error: logtail is not installed. run "sudo apt install logtail"'
+  exit 1
+fi
+
 function usage(){
         name=$(basename $0)
         echo "Nginx show 50x,40x errors count script, and optionaly restart some service."
